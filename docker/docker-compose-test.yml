@@ -1,0 +1,24 @@
+version: '3.7'
+
+networks:
+  default:
+    external: true
+    name: lb-common
+  
+services : 
+  # As a Docker Label
+  whoami:
+    #  A container that exposes an API to show its IP address
+    image: traefik/whoami
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.local.io`)"
+      - "traefik.http.routers.whoami.entrypoints=web"
+      - "traefik.http.middlewares.whoami-ratelimit.ratelimit.average=100"
+      - "traefik.http.middlewares.whoami-ratelimit.ratelimit.burst=50"
+      - "traefik.http.middlewares.whoami-headers.headers.customrequestheaders.X-Script-Name=Me"
+      - "traefik.http.middlewares.whoami-headers.headers.customresponseheaders.X-Custom-Response-Header=MyValue"
+      - "traefik.http.routers.whoami.middlewares=whoami-ratelimit,whoami-headers"
+    networks:
+      - default
+ 
