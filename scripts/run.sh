@@ -9,3 +9,4 @@ if [ -n "$1" ]; then
 else
     (cd ${APP_PATH} && cd .. && make)
 fi
+
