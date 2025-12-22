@@ -20,10 +20,18 @@ services:
       - "8081:8080" # The Web UI (enabled by --api)
     labels:
       - "traefik.enable=true"
+      # HTTP router - redirects to HTTPS
+      - "traefik.http.routers.dashboard-http.rule=Host(`dashboard.local.io`)"
+      - "traefik.http.routers.dashboard-http.entrypoints=web"
+      - "traefik.http.routers.dashboard-http.middlewares=dashboard-redirect"
+      # Redirect middleware
+      - "traefik.http.middlewares.dashboard-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.dashboard-redirect.redirectscheme.permanent=true"
+      # HTTPS router
       - "traefik.http.routers.dashboard.rule=Host(`dashboard.local.io`)"
-      - "traefik.http.routers.dashboard.entrypoints=web"
+      - "traefik.http.routers.dashboard.entrypoints=websecure"
       - "traefik.http.routers.dashboard.service=api@internal"
-      # - "traefik.http.routers.dashboard.tls=true"
+      - "traefik.http.routers.dashboard.tls=true"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ${PWD}/docker/traefik.yaml:/etc/traefik/traefik.yaml:ro
