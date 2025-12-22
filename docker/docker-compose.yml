@@ -15,10 +15,11 @@ services:
       - "8080:80"   # The HTTP port
       - "443:443"   # The HTTPS port
       - "8443:443"  # The HTTPS port
+      - "90:90"     # The DB port
       # - "25:25"     # The SMPT port
       - "8081:8080" # The Web UI (enabled by --api)
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:rw
-      - ${PWD}/docker/traefik.toml:/etc/traefik/traefik.toml:rw
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ${PWD}/docker/traefik.yaml:/etc/traefik/traefik.yaml:ro
     networks:
       - lb-common
