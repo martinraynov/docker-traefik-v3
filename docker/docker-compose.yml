@@ -6,7 +6,7 @@ networks:
 
 services:
   reverse-proxy:
-    image: traefik:v3.3 # The official Traefik docker image
+    image: traefik:v3.6 # The official Traefik docker image
     # network_mode: "host" 
     container_name: traefik
     #command: --api --docker
