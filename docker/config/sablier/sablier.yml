@@ -13,7 +13,7 @@ sessions:
   # The expiration checking interval.
   # Higher duration gives less stress on CPU.
   # If you only use sessions of 1h, setting this to 5m is a good trade-off.
-  expiration-interval: 5m
+  expiration-interval: 10m
 logging:
   level: debug
 strategy:
@@ -25,4 +25,4 @@ strategy:
     # Default theme used for dynamic strategy (default "hacker-terminal")
     default-theme: ghost
     # Default refresh frequency in the HTML page for dynamic strategy
-    default-refresh-frequency: 5s
+    default-refresh-frequency: 1m
