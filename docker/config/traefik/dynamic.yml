@@ -13,6 +13,11 @@ http:
       #   permanent: true
 
 tls:
+  stores:
+    default:
+      defaultCertificate:
+        certFile: "/etc/certs/wildcard-local.io-cert.pem"
+        keyFile: "/etc/certs/wildcard-local.io-key.pem"
   certificates:
     - certFile: "/etc/certs/wildcard-local.io-cert.pem"
       keyFile: "/etc/certs/wildcard-local.io-key.pem"
