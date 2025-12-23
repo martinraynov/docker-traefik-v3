@@ -49,5 +49,9 @@ whoami: ## Start test container for validation
 	$(info $(M) Starting an instance of Test container at : http://whoami.local.io/)
 	@docker-compose -f ./docker/docker-compose-test.yml up
 
+.PHONY: certs
+certs: ## Generate wildcard SSL certificate for *.local.io
+	$(info $(M) Generating wildcard SSL certificate for *.local.io)
+	@./scripts/generate-cert.sh
 
 .DEFAULT_GOAL := help

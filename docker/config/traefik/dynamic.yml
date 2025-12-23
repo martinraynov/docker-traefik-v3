@@ -12,3 +12,9 @@ http:
       #   replacement: "https://${1}"
       #   permanent: true
 
+tls:
+  certificates:
+    - certFile: "/etc/certs/wildcard-local.io-cert.pem"
+      keyFile: "/etc/certs/wildcard-local.io-key.pem"
+      # Note: Traefik will automatically detect the domains from the certificate
+      # The wildcard certificate (*.local.io) will be used automatically for matching domains

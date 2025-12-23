@@ -33,6 +33,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ${PWD}/docker/config/traefik/traefik.yml:/etc/traefik/traefik.yml:ro
       - ${PWD}/docker/config/traefik/dynamic.yml:/etc/traefik/dynamic.yml:ro
+      - ${PWD}/docker/certs:/etc/certs:ro
     networks:
       - lb-common
     depends_on:
