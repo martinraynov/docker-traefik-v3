@@ -1,0 +1,14 @@
+http:
+  middlewares:
+    # Global HTTPS redirect middleware - reusable for any service
+    redirect-to-https:
+      redirectScheme:
+        scheme: https
+        port: 443
+        permanent: true
+      # Alternative: Use redirectRegex if redirectScheme doesn't work
+      # redirectRegex:
+      #   regex: "^http://(.*)"
+      #   replacement: "https://${1}"
+      #   permanent: true
+

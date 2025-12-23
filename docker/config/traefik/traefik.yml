@@ -149,4 +149,19 @@ providers:
     #
     # exposedByDefault: false
     network: "lb-common"
+  
+  # File provider for dynamic configuration
+  file:
+    filename: /etc/traefik/dynamic.yml
+    watch: true
 
+################################################################
+# Experimental features
+################################################################
+
+# Enable experimental features
+experimental:
+  plugins:
+    sablier:
+      moduleName: "github.com/sablierapp/sablier-traefik-plugin"
+      version: "v1.1.0"

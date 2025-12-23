@@ -23,6 +23,7 @@ remove: ## Remove Application as executable
 add_localhost: ## Add local host into /etc/hosts file (need root permission)
 	@ echo "# >>> ${APP_NAME} for workspace" >> /etc/hosts
 	@ echo "127.0.0.1\ttraefik.local.io dashboard.local.io" >> /etc/hosts
+	@ echo "127.0.0.1\tsablier.local.io" >> /etc/hosts
 	@ echo "# <<< ${APP_NAME} for workspace" >> /etc/hosts
 	$(info $(M) Local host added for ${APP_NAME} application in your hosts file)
 

@@ -1,0 +1,28 @@
+provider:
+  # Provider to use to manage containers (docker, swarm, kubernetes)
+  name: docker
+  docker:
+    # Strategy to use for stopping Docker containers: stop or pause (default: stop)
+    strategy: stop
+server:
+  # The server port to use
+  port: 10000
+sessions:
+  # The default session duration (default 5m)
+  default-duration: 1h
+  # The expiration checking interval.
+  # Higher duration gives less stress on CPU.
+  # If you only use sessions of 1h, setting this to 5m is a good trade-off.
+  expiration-interval: 5m
+logging:
+  level: debug
+strategy:
+  dynamic:
+    # Custom themes folder, will load all .html files recursively (default empty)
+    custom-themes-path: /etc/sablier/themes
+    # Show instances details by default in waiting UI
+    show-details-by-default: false
+    # Default theme used for dynamic strategy (default "hacker-terminal")
+    default-theme: ghost
+    # Default refresh frequency in the HTML page for dynamic strategy
+    default-refresh-frequency: 5s
