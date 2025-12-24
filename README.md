@@ -164,6 +164,7 @@ services:
       - "sablier.enable=true"
       - "sablier.group=traefik"
       - "traefik.http.routers.my-service.middlewares=sablier@file"
+      - "traefik.docker.allownonrunning=true"
 ```
 
 ## Testing
