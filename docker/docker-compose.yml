@@ -23,10 +23,7 @@ services:
       # HTTP router - redirects to HTTPS
       - "traefik.http.routers.dashboard-http.rule=Host(`dashboard.local.io`)"
       - "traefik.http.routers.dashboard-http.entrypoints=web"
-      - "traefik.http.routers.dashboard-http.middlewares=dashboard-redirect"
-      # Redirect middleware
-      - "traefik.http.middlewares.dashboard-redirect.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.dashboard-redirect.redirectscheme.permanent=true"
+      - "traefik.http.routers.dashboard-http.middlewares=redirect-to-https@file"
       # HTTPS router
       - "traefik.http.routers.dashboard.rule=Host(`dashboard.local.io`)"
       - "traefik.http.routers.dashboard.entrypoints=websecure"
@@ -34,6 +31,24 @@ services:
       - "traefik.http.routers.dashboard.tls=true"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ${PWD}/docker/traefik.yaml:/etc/traefik/traefik.yaml:ro
+      - ${PWD}/docker/config/traefik/traefik.yml:/etc/traefik/traefik.yml:ro
+      - ${PWD}/docker/config/traefik/dynamic.yml:/etc/traefik/dynamic.yml:ro
+      - ${PWD}/docker/certs:/etc/certs:ro
     networks:
       - lb-common
+    depends_on:
+      - sablier
+
+  sablier:
+    image: sablierapp/sablier:1.10.1
+    container_name: sablier
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./config/sablier/sablier.yml:/etc/sablier/sablier.yml:ro
+      - ./config/sablier/themes:/etc/sablier/themes:ro
+    labels:
+      - traefik.enable=false
+    networks:
+      - lb-common
+
