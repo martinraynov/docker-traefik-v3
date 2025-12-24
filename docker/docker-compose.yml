@@ -45,7 +45,7 @@ services:
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./config/sablier/sablier.yml:/etc/sablier/sablier.yaml:ro
+      - ./config/sablier/sablier.yml:/etc/sablier/sablier.yml:ro
       - ./config/sablier/themes:/etc/sablier/themes:ro
     labels:
       - traefik.enable=false
