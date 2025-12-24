@@ -9,7 +9,7 @@ server:
   port: 10000
 sessions:
   # The default session duration (default 5m)
-  default-duration: 1h
+  default-duration: 5m
   # The expiration checking interval.
   # Higher duration gives less stress on CPU.
   # If you only use sessions of 1h, setting this to 5m is a good trade-off.
