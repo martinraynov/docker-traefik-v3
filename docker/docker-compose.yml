@@ -48,12 +48,7 @@ services:
       - ./config/sablier/sablier.yml:/etc/sablier/sablier.yaml:ro
       - ./config/sablier/themes:/etc/sablier/themes:ro
     labels:
-      - traefik.enable=true
-      - traefik.http.routers.sablier.entrypoints=web
-      - traefik.http.routers.sablier.rule=Host(`sablier.local.io`)
-      - traefik.http.routers.sablier.service=svc-sablier
-      - traefik.http.services.svc-sablier.loadbalancer.server.port=10000
-      - traefik.http.routers.sablier.tls=true
+      - traefik.enable=false
     networks:
       - lb-common
 
