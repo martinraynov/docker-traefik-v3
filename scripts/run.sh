@@ -9,7 +9,7 @@ APP_NAME=$(basename "$0")
 APP_PATH=$(dirname $(find -L /usr/local/bin/${APP_NAME} -exec readlink -f {} +))
 
 if [ -n "$1" ]; then
-    (cd ${APP_PATH} && cd .. && ${pwd} && make $1)
+    (cd ${APP_PATH} && cd .. && make $1)
 else
     (cd ${APP_PATH} && cd .. && make)
 fi

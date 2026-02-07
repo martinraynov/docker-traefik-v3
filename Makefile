@@ -36,17 +36,17 @@ remove_localhost: ## Remove local host from /etc/hosts file (need root permissio
 .PHONY: start
 start: ## Start the Traefik docker container
 	$(info $(M) Starting an instance of $(APP_NAME) at : http://127.0.0.1:8081/)
-	@docker-compose -f ./docker/docker-compose.yml up -d
+	@docker compose -f ./docker/docker-compose.yml up -d
 
 .PHONY: stop
 stop: ## Stopping running Traefik instances
 	$(info $(M) Stopping $(APP_NAME) instance)
-	@docker-compose -f ./docker/docker-compose.yml down
+	@docker compose -f ./docker/docker-compose.yml down
 
 .PHONY: whoami
 whoami: ## Start test container for validation
 	$(info $(M) Starting an instance of Test container at : http://whoami.local.io/)
-	@docker-compose -f ./docker/docker-compose-test.yml up
+	@docker compose -f ./docker/docker-compose-test.yml up
 
 .PHONY: certs
 certs: ## Generate wildcard SSL certificate for *.local.io
