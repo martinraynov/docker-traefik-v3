@@ -113,13 +113,14 @@ api:
 ################################################################
 
 # Enable ping
-ping:
+ping: {}
   # Name of the related entry point
   #
   # Optional
   # Default: "traefik"
   #
   # entryPoint: "traefik"
+  
 
 ################################################################
 # Docker configuration backend
@@ -147,7 +148,7 @@ providers:
     # Optional
     # Default: true
     #
-    # exposedByDefault: false
+    exposedByDefault: false
     network: "lb-common"
   
   # File provider for dynamic configuration
