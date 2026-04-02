@@ -16,13 +16,18 @@ global:
 entryPoints:
   web:
     address: ":80"
+    http:
+      encodedCharacters:
+        allowEncodedSlash: true
   
   db:
     address: ":90"
 
   websecure:
     address: ":443"
-
+    http:
+      encodedCharacters:
+        allowEncodedSlash: true
   ssh:
     address: ":22"
 
